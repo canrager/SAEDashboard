@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## v0.7.3 (2025-10-11)
+
+### Fix
+
+* fix: broken dependencies ([`25ce6e8`](https://github.com/jbloomAus/SAEDashboard/commit/25ce6e8ae2debe232b0eff4ba910fa10fc816480))
+
+### Unknown
+
+* Merge pull request #70 from jbloomAus/fix_deps
+
+fix: broken dependencies ([`352b9b2`](https://github.com/jbloomAus/SAEDashboard/commit/352b9b2148b62c8fabb7adcf6bf0cbacfa345a74))
+
+* update .gitignore ([`6133ca6`](https://github.com/jbloomAus/SAEDashboard/commit/6133ca67b39bf6e033e8b4792f5eba9850668821))
+
 ## v0.7.2 (2025-09-01)
 
 ### Fix
