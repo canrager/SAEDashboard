@@ -86,7 +86,7 @@ class FeatureDataGenerator:
             )  # make sure acts are on the correct device
 
             # For TopK, compute all activations first, then select features
-            if isinstance(self.encoder.activation_fn, TopK):
+            if self.encoder.cfg.architecture in ["topk", "batchtopk", "temporal"]:
                 # Get all features' activations
                 all_features_acts = self.encoder.encode(primary_acts)
                 # Then select only the features we're interested in
