@@ -7,7 +7,6 @@ import torch
 from jaxtyping import Float, Int
 from sae_lens import SAE, HookedSAETransformer
 from sae_lens.config import DTYPE_MAP as DTYPES
-from sae_lens.saes.topk_sae import TopK
 from torch import Tensor, nn
 from tqdm.auto import tqdm
 

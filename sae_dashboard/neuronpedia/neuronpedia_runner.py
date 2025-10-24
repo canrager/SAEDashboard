@@ -368,8 +368,13 @@ class NeuronpediaRunner:
         self.sae.cfg.dataset_path = self.cfg.huggingface_dataset_path  # type: ignore
         self.sae.cfg.context_size = self.cfg.n_tokens_in_prompt  # type: ignore
 
+        # Handle architecture as either attribute or method
+        architecture = self.sae.cfg.architecture
+        if callable(architecture):
+            architecture = architecture()
+
         # Skip fold_W_dec_norm for CLT wrappers and TemporalSAE as they don't support this method
-        if "CLTLayerWrapper" in str(type(self.sae)) or self.sae.cfg.architecture() in ["temporal"]:
+        if "CLTLayerWrapper" in str(type(self.sae)) or architecture in ["temporal"]:
             print("NeuronpediaRunner: Skipping fold_W_dec_norm().")
         else:
             self.sae.fold_W_dec_norm()
