@@ -13,12 +13,15 @@ ACT_CACHE_FOLDER = "cached_activations"
 NP_SET_NAME = "temporal-gemma-2-2b"
 SAE_SET = "temporal-sae-gemma-2-2b"
 SAE_PATH = "blocks.12.hook_resid_post"
-NUM_FEATURES_PER_BATCH = 2
-NUM_BATCHES = 2
+NUM_FEATURES_PER_BATCH = 1
+NUM_BATCHES = 1
 HF_DATASET_PATH = "monology/pile-uncopyrighted"
 
+# Introducing rounding parameter
+ROUNDING_PRECISION = 3
 
 SPARSITY_THRESHOLD = 1
+
 
 # IMPORTANT
 SAE_DTYPE = "bfloat16"
@@ -26,9 +29,9 @@ MODEL_DTYPE = "bfloat16"
 
 # PERFORMANCE SETTING
 # N_PROMPTS = 24576
-N_PROMPTS = 128
-N_TOKENS_IN_PROMPT = 128
-N_PROMPTS_IN_FORWARD_PASS = 128
+N_PROMPTS = 1000
+N_TOKENS_IN_PROMPT = 500
+N_PROMPTS_IN_FORWARD_PASS = 10
 
 
 if __name__ == "__main__":
@@ -52,9 +55,10 @@ if __name__ == "__main__":
         n_prompts_in_forward_pass=N_PROMPTS_IN_FORWARD_PASS,
         n_features_at_a_time=NUM_FEATURES_PER_BATCH,
         start_batch=0,
-        use_wandb=True,
+        use_wandb=False,
+        rounding_precision=ROUNDING_PRECISION,  # Set rounding precision to 10 decimal places
         # TESTING ONLY
-        end_batch=6,
+        end_batch=0,
     )
 
     runner = NeuronpediaRunner(cfg)
